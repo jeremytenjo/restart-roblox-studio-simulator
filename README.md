@@ -55,4 +55,4 @@ Special thanks to **zephyras** for contributions and feedback!
 
 ## License
 
-Unlicensed - This project is provided as-is.
+MIT License - Copyright (c) 2025 Jeremy Tenjo. See [LICENSE](LICENSE) file for details.
