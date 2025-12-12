@@ -13,6 +13,9 @@
   "version": "0.0.3",
   "publisher": "tenjojeremy",
   "icon": "assets/images/logo.png",
+  "repository": {
+    "url": "https://github.com/jeremytenjo/reload-roblox-studio-simulator"
+  },
   "type": "module",
   "engines": {
     "vscode": "^1.107.0"
