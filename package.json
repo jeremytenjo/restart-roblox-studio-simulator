@@ -14,13 +14,13 @@
   "contributes": {
     "commands": [
       {
-        "command": "robloxAutoTest.runOrRestart",
+        "command": "reloadRobloxStudioSimulator.restart",
         "title": "Roblox: Run or Restart Test"
       }
     ],
     "keybindings": [
       {
-        "command": "robloxAutoTest.runOrRestart",
+        "command": "reloadRobloxStudioSimulator.restart",
         "key": "f2",
         "when": "true"
       }

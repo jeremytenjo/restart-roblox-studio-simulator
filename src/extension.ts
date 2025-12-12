@@ -3,15 +3,15 @@ import { WebSocketServer, WebSocket } from 'ws'
 
 const pacakgeName = '[reload-roblox-studio-simulator]'
 
-type RunOrRestartMessage = {
-  type: 'runOrRestart'
+type RestartMessage = {
+  type: 'restart'
   source: string
   timestamp: number
 }
 
 let wss: WebSocketServer | undefined
 
-function broadcast(msg: RunOrRestartMessage) {
+function broadcast(msg: RestartMessage) {
   if (!wss) {
     return
   }
@@ -41,9 +41,9 @@ export function activate(context: vscode.ExtensionContext) {
     socket.on('message', (data) => {
       try {
         const parsed = JSON.parse(data.toString())
-        if (parsed && parsed.type === 'runOrRestart') {
-          const msg: RunOrRestartMessage = {
-            type: 'runOrRestart',
+        if (parsed && parsed.type === 'restart') {
+          const msg: RestartMessage = {
+            type: 'restart',
             source: parsed.source ?? 'roblox',
             timestamp: Date.now(),
           }
@@ -55,15 +55,18 @@ export function activate(context: vscode.ExtensionContext) {
     })
   })
 
-  const cmd = vscode.commands.registerCommand('robloxAutoTest.runOrRestart', () => {
-    const msg: RunOrRestartMessage = {
-      type: 'runOrRestart',
-      source: 'vscode',
-      timestamp: Date.now(),
-    }
-    broadcast(msg)
-    vscode.window.showInformationMessage('Roblox: run/restart requested.')
-  })
+  const cmd = vscode.commands.registerCommand(
+    'reloadRobloxStudioSimulator.restart',
+    () => {
+      const msg: RestartMessage = {
+        type: 'restart',
+        source: 'vscode',
+        timestamp: Date.now(),
+      }
+      broadcast(msg)
+      vscode.window.showInformationMessage('Roblox: run/restart requested.')
+    },
+  )
 
   context.subscriptions.push(cmd)
 
@@ -73,8 +76,8 @@ export function activate(context: vscode.ExtensionContext) {
 
     // Optional: filter by file pattern (e.g., only TypeScript/Lua files)
     if (doc.fileName.match(/\.(ts|tsx|js|jsx|lua|luau)$/)) {
-      const msg: RunOrRestartMessage = {
-        type: 'runOrRestart',
+      const msg: RestartMessage = {
+        type: 'restart',
         source: 'vscode-autosave',
         timestamp: Date.now(),
       }
