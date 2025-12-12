@@ -43,7 +43,7 @@ To disable automatic reloading when files are saved, add the following to your V
 
 ```json
 {
-  "reloadRobloxStudioSimulator.disableAutoReload": true
+  "restartRobloxStudioSimulator.disableAutoReload": true
 }
 ```
 
