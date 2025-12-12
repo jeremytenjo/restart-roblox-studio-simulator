@@ -1,0 +1,6 @@
+{
+  "name": "reload-roblox-studio-simulator-bridge-plugin",
+  "scripts": {
+    "build:roblox:plugin": "rojo build -o ReloadRobloxSimulatorBridgePlugin.rbxm"
+  }
+}
