@@ -33,48 +33,6 @@ A VS Code extension that enables hot-reload functionality for Roblox game develo
 
 Connect your Roblox client to the WebSocket server at `ws://localhost:3010` to receive hot-reload messages.
 
-## Development
-
-### Build Commands
-
-- **Watch TypeScript**: `npm run watch:tsc`
-- **Watch esbuild**: `npm run watch:esbuild`
-- **Full watch**: `npm run watch`
-- **Compile**: `npm run compile`
-
-### Project Structure
-
-```
-├── src/
-│   └── extension.ts       # Main extension entry point
-├── package.json           # Project manifest
-├── tsconfig.json          # TypeScript configuration
-├── esbuild.js            # Build configuration
-└── README.md             # This file
-```
-
-## Configuration
-
-- **WebSocket Port**: 3010 (configured in `src/extension.ts`)
-- **Activation Event**: Activates on VS Code startup (`onStartupFinished`)
-
-## Message Protocol
-
-The extension broadcasts messages with the following structure:
-
-```typescript
-{
-  type: 'runOrRestart',
-  source: 'vscode' | 'vscode-autosave' | 'roblox',
-  timestamp: number
-}
-```
-
-## Dependencies
-
-- `ws` (8.18.3) - WebSocket library for Node.js
-- VS Code 1.107.0 or later
-
 ## Special Thanks
 
 Special thanks to **zephyras** for contributions and feedback!

@@ -28,10 +28,13 @@
   },
   "scripts": {
     "dev": "tsc -watch -p ./",
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
+    "build": "tsc -p ./",
+    "deploy:patch": "npm version patch && npm run lint && npm run build && vsce publish",
+    "deploy:minor": "npm version minor && npm run lint && npm run build && vsce publish",
+    "deploy:major": "npm version major && npm run lint && npm run build && vsce publish",
     "test": "echo \"no tests\"",
     "prettify": "prettier --write .",
+    "lint": "npm run tests:lint && npm run tests:ts-types",
     "tests:lint": "eslint .",
     "tests:ts-types": "tsgo --noEmit"
   },
