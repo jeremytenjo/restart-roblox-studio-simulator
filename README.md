@@ -75,6 +75,10 @@ The extension broadcasts messages with the following structure:
 - `ws` (8.18.3) - WebSocket library for Node.js
 - VS Code 1.107.0 or later
 
+## Special Thanks
+
+Special thanks to **zephyras** for contributions and feedback!
+
 ## License
 
 Unlicensed - This project is provided as-is.
