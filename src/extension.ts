@@ -64,7 +64,7 @@ export function activate(context: vscode.ExtensionContext) {
         timestamp: Date.now(),
       }
       broadcast(msg)
-      vscode.window.showInformationMessage('Roblox: run/restart requested.')
+      vscode.window.showInformationMessage('Roblox: restart requested.')
     },
   )
 

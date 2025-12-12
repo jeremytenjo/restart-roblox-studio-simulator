@@ -1,13 +1,13 @@
 {
-  "name": "reload-roblox-studio-simulator",
+  "name": "restart-roblox-studio-simulator",
   "displayName": "Reload Roblox Studio Simulator",
-  "description": "VS Code extension for reloading the Roblox Studio simulations",
+  "description": "VS Code extension for restarting the Roblox Studio simulations",
   "keywords": [
     "roblox",
     "vscode",
     "extension",
-    "reload",
-    "hot-reload",
+    "restart",
+    "hot-reloading",
     "simulator",
     "testing"
   ],
@@ -16,7 +16,7 @@
   "license": "MIT",
   "icon": "assets/images/logo.png",
   "repository": {
-    "url": "https://github.com/jeremytenjo/reload-roblox-studio-simulator"
+    "url": "https://github.com/jeremytenjo/restart-roblox-studio-simulator"
   },
   "type": "module",
   "engines": {
@@ -29,13 +29,13 @@
   "contributes": {
     "commands": [
       {
-        "command": "reloadRobloxStudioSimulator.restart",
-        "title": "Roblox Studio: Restart Simulator"
+        "command": "restartRobloxStudioSimulator.restart",
+        "title": "Roblox Studio: Reload Simulator"
       }
     ],
     "keybindings": [
       {
-        "command": "reloadRobloxStudioSimulator.restart",
+        "command": "restartRobloxStudioSimulator.restart",
         "key": "f2",
         "when": "true"
       }
@@ -43,10 +43,10 @@
     "configuration": {
       "title": "Roblox Studio Simulator",
       "properties": {
-        "reloadRobloxStudioSimulator.disableAutoReload": {
+        "restartRobloxStudioSimulator.disableAutoReload": {
           "type": "boolean",
           "default": false,
-          "description": "Disable automatic reloading when files are saved"
+          "description": "Disable automatic restarting when files are saved"
         }
       }
     }
