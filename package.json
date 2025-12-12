@@ -25,7 +25,7 @@
     "commands": [
       {
         "command": "reloadRobloxStudioSimulator.restart",
-        "title": "Roblox: Run or Restart Test"
+        "title": "Roblox Studio: Restart Simulator"
       }
     ],
     "keybindings": [
