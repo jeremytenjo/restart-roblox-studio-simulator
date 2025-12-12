@@ -30,7 +30,7 @@
     "commands": [
       {
         "command": "restartRobloxStudioSimulator.restart",
-        "title": "Roblox Studio: Reload Simulator"
+        "title": "Roblox Studio: Restart Simulator"
       }
     ],
     "keybindings": [
