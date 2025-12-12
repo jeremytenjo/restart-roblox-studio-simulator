@@ -1,8 +1,0 @@
-# Project place file
-/reload-roblox-studio-simulator-bridge-plugin.rbxlx
-
-# Roblox Studio lock files
-/*.rbxlx.lock
-/*.rbxl.lock
-
-sourcemap.json
