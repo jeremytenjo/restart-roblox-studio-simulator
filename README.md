@@ -11,6 +11,24 @@ A VS Code extension that enables hot-reload functionality for Roblox game develo
 - **File Type Filtering**: Intelligently filters supported file types (`.ts`, `.tsx`, `.js`, `.jsx`, `.lua`, `.luau`)
 - **Restart Roblox Studio Simuluator Management**: Start and stop the WebSocket server on demand via VS Code commands
 
+## Installation
+
+### VS Code Extension
+
+The extension is available on the VS Code Marketplace. Install it like any other extension through the Extensions panel in VS Code.
+
+### Roblox Studio Plugin
+
+You must also install the **Restart Roblox Studio Simulator Bridge Plugin** in Roblox Studio:
+
+1. Open Roblox Studio
+2. Go to **Plugins** → **Manage Plugins**
+3. Search for "Restart Roblox Simulator Bridge Plugin" or use this direct link:
+   - [Install Plugin](https://create.roblox.com/store/asset/136865535235685/Restart-Roblox-Simulator-Bridge-Plugin)
+4. Click **Install**
+
+The plugin adds toolbar buttons to connect/disconnect from the VS Code extension and enables the restart functionality.
+
 ## Usage
 
 ### Manual Trigger
