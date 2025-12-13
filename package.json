@@ -2,7 +2,7 @@
   "name": "restart-roblox-studio-simulator",
   "displayName": "Restart Roblox Studio Simulator",
   "description": "Restart the Roblox Studio simulator on code changes for faster testing.",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "publisher": "tenjojeremy",
   "license": "MIT",
   "categories": [
