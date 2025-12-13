@@ -11,6 +11,9 @@
   },
   "type": "module",
   "main": "./out/extension.js",
+  "files": [
+    "out"
+  ],
   "engines": {
     "vscode": "^1.107.0"
   },
