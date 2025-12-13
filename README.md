@@ -9,16 +9,7 @@ A VS Code extension that enables hot-reload functionality for Roblox game develo
 - **Auto Reload on Save**: Automatically triggers simulation restart when you save TypeScript, JavaScript, or Lua files
 - **Manual Trigger**: Press `F2` to trigger a "run or restart" command for your Roblox simulation
 - **File Type Filtering**: Intelligently filters supported file types (`.ts`, `.tsx`, `.js`, `.jsx`, `.lua`, `.luau`)
-
-## Installation
-
-1. Clone or download this repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Open the project in VS Code
-4. Press `F5` to run the extension in a new VS Code window
+- **Restart Roblox Studio Simuluator Management**: Start and stop the WebSocket server on demand via VS Code commands
 
 ## Usage
 
@@ -30,9 +21,15 @@ A VS Code extension that enables hot-reload functionality for Roblox game develo
 
 - Simply save a supported file (TypeScript, JavaScript, or Lua) to automatically trigger a restart
 
-### WebSocket Connection
+### Restart Roblox Studio Simuluator Management
 
-Connect your Roblox client to the WebSocket server at `ws://localhost:3010` to receive hot-reload messages.
+You can manage the WebSocket server using VS Code commands (accessible via `Cmd+Shift+P` / `Ctrl+Shift+P`):
+
+- **Restart Roblox Studio Simuluator: Start** - Start Restart Roblox Studio Simuluator
+- **Restart Roblox Studio Simuluator: Stop** - Stop Restart Roblox Studio Simuluator
+- A status bar indicator shows the current Restart Roblox Studio Simuluator state (Running/Stopped)
+
+Restart Roblox Studio Simuluator starts automatically when the extension is activated.
 
 ## Configuration
 
@@ -47,6 +44,16 @@ To disable automatic reloading when files are saved, add the following to your V
 ```
 
 When enabled, automatic reloading on file save is disabled. You can still use the `F2` keyboard shortcut to manually trigger a reload.
+
+## Development Setup
+
+1. Clone or download this repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Open the project in VS Code
+4. Press `F5` to run the extension with a new Extension Development Host window
 
 ## Special Thanks
 
