@@ -364,7 +364,8 @@ local function showNotification(message, duration)
 	local textLabel = Instance.new("TextLabel")
 	textLabel.Name = "NotificationLabel"
 	textLabel.Text = message
-	textLabel.TextScaled = true
+	textLabel.TextScaled = false
+	textLabel.TextSize = 15
 	textLabel.BackgroundTransparency = 1
 	textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 	textLabel.BorderSizePixel = 0
