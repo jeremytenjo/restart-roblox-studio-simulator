@@ -2,7 +2,7 @@
   "name": "restart-roblox-studio-simulator",
   "displayName": "Restart Roblox Studio Simulator",
   "description": "VS Code extension for restarting the Roblox Studio simulator",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "publisher": "tenjojeremy",
   "license": "MIT",
   "icon": "assets/images/logo.png",
