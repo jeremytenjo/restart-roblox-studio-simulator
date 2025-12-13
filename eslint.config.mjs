@@ -4,7 +4,7 @@ import eslintPluginRequireJsExtension from 'eslint-plugin-require-js-extension'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import importPlugin from 'eslint-plugin-import'
 
-import prettierConfig from './.prettierrc.js'
+import prettierConfig from './.prettierrc.mjs'
 
 export default defineConfig([
   // Global settings
