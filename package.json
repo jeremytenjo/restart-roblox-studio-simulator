@@ -49,6 +49,16 @@
         "command": "restartRobloxStudioSimulator.restart",
         "title": "Roblox Studio: Restart Simulator",
         "icon": "$(refresh)"
+      },
+      {
+        "command": "restartRobloxStudioSimulator.stopWebSocket",
+        "title": "Roblox Studio: Stop",
+        "icon": "$(debug-stop)"
+      },
+      {
+        "command": "restartRobloxStudioSimulator.startWebSocket",
+        "title": "Roblox Studio: Start",
+        "icon": "$(debug-start)"
       }
     ],
     "keybindings": [

@@ -10,6 +10,8 @@ type RestartMessage = {
 }
 
 let wss: WebSocketServer | undefined
+let wsStatusBarItem: vscode.StatusBarItem | undefined
+const port = 3010
 
 function broadcast(msg: RestartMessage) {
   if (!wss) {
@@ -24,11 +26,32 @@ function broadcast(msg: RestartMessage) {
   }
 }
 
-export function activate(context: vscode.ExtensionContext) {
-  const port = 3010
+function updateWebSocketStatusBar() {
+  if (!wsStatusBarItem) return
+
+  if (wss) {
+    wsStatusBarItem.text = '$(debug-disconnect) WebSocket Running'
+    wsStatusBarItem.backgroundColor = new vscode.ThemeColor(
+      'statusBarItem.successBackground',
+    )
+  } else {
+    wsStatusBarItem.text = '$(debug-disconnect) WebSocket Stopped'
+    wsStatusBarItem.backgroundColor = undefined
+  }
+}
+
+function startWebSocket() {
+  if (wss) {
+    vscode.window.showWarningMessage(
+      'Restart Roblox Studio Simuluator: WebSocket is already running',
+    )
+    return
+  }
 
   wss = new WebSocketServer({ port }, () => {
     console.log(`${pacakgeName} WebSocket listening on ws://localhost:${port}`)
+    vscode.window.showInformationMessage('WebSocket started on ws://localhost:3010')
+    updateWebSocketStatusBar()
   })
 
   wss.on('connection', (socket: WebSocket) => {
@@ -54,8 +77,46 @@ export function activate(context: vscode.ExtensionContext) {
       }
     })
   })
+}
 
-  const cmd = vscode.commands.registerCommand(
+function stopWebSocket() {
+  if (!wss) {
+    vscode.window.showWarningMessage(
+      'Restart Roblox Studio Simuluator: WebSocket is not running',
+    )
+    return
+  }
+
+  wss.close()
+  wss = undefined
+  vscode.window.showInformationMessage('Restart Roblox Studio Simuluator stopped')
+  updateWebSocketStatusBar()
+}
+
+export function activate(context: vscode.ExtensionContext) {
+  // Start WebSocket on activation
+  startWebSocket()
+
+  // Register start command
+  const startCmd = vscode.commands.registerCommand(
+    'restartRobloxStudioSimulator.startWebSocket',
+    () => {
+      startWebSocket()
+    },
+  )
+  context.subscriptions.push(startCmd)
+
+  // Register stop command
+  const stopCmd = vscode.commands.registerCommand(
+    'restartRobloxStudioSimulator.stopWebSocket',
+    () => {
+      stopWebSocket()
+    },
+  )
+  context.subscriptions.push(stopCmd)
+
+  // Register restart command
+  const restartCmd = vscode.commands.registerCommand(
     'restartRobloxStudioSimulator.restart',
     () => {
       const msg: RestartMessage = {
@@ -67,19 +128,27 @@ export function activate(context: vscode.ExtensionContext) {
       vscode.window.showInformationMessage('Requested Roblox Studio Simulator Restart')
     },
   )
+  context.subscriptions.push(restartCmd)
 
-  context.subscriptions.push(cmd)
-
-  // Create status bar button
-  const statusBarItem = vscode.window.createStatusBarItem(
+  // Create status bar button for restart
+  const restartStatusBarItem = vscode.window.createStatusBarItem(
     vscode.StatusBarAlignment.Right,
     100,
   )
-  statusBarItem.command = 'restartRobloxStudioSimulator.restart'
-  statusBarItem.text = '$(refresh) Restart Roblox Studio Simulator'
-  statusBarItem.tooltip = 'Restart Roblox Studio Simulator'
-  statusBarItem.show()
-  context.subscriptions.push(statusBarItem)
+  restartStatusBarItem.command = 'restartRobloxStudioSimulator.restart'
+  restartStatusBarItem.text = '$(refresh) Restart Roblox Studio Simulator'
+  restartStatusBarItem.tooltip = 'Restart Roblox Studio Simulator'
+  restartStatusBarItem.show()
+  context.subscriptions.push(restartStatusBarItem)
+
+  // Create status bar button for WebSocket status
+  wsStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 99)
+  wsStatusBarItem.text = '$(debug-disconnect) WebSocket Running'
+  wsStatusBarItem.tooltip = 'Click to stop WebSocket'
+  wsStatusBarItem.command = 'restartRobloxStudioSimulator.stopWebSocket'
+  wsStatusBarItem.show()
+  context.subscriptions.push(wsStatusBarItem)
+  updateWebSocketStatusBar()
 
   // Trigger on file save
   const onSaveDisposable = vscode.workspace.onDidSaveTextDocument((doc) => {
@@ -107,10 +176,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push({
     dispose() {
-      if (wss) {
-        wss.close()
-        wss = undefined
-      }
+      stopWebSocket()
     },
   })
 }
