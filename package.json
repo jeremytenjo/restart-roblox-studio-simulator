@@ -56,10 +56,10 @@
       }
     ],
     "menus": {
-      "editor/title": [
+      "statusBar/right": [
         {
           "command": "restartRobloxStudioSimulator.restart",
-          "group": "navigation"
+          "group": "1_modification"
         }
       ]
     },
