@@ -36,8 +36,7 @@
     "tests:ts-types": "tsgo --noEmit"
   },
   "activationEvents": [
-    "onStartupFinished",
-    "onCommand:restartRobloxStudioSimulator.restart"
+    "onStartupFinished"
   ],
   "contributes": {
     "commands": [
