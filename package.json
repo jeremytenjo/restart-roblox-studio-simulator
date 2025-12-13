@@ -9,7 +9,6 @@
   "repository": {
     "url": "https://github.com/jeremytenjo/restart-roblox-studio-simulator"
   },
-  "type": "module",
   "main": "./dist/index.js",
   "files": [
     "dist"
@@ -28,7 +27,7 @@
   ],
   "scripts": {
     "dev": "npm run -S build -- --watch",
-    "build": "esbuild ./src/index.ts --bundle --outfile=dist/index.js --external:vscode --external:esbuild --format=esm --platform=node",
+    "build": "esbuild ./src/index.ts --bundle --outfile=dist/index.js --external:vscode --external:esbuild --external:ws --format=cjs --platform=node",
     "deploy:patch": "npm version patch && npm run lint && npm run build && vsce publish",
     "deploy:minor": "npm version minor && npm run lint && npm run build && vsce publish",
     "deploy:major": "npm version major && npm run lint && npm run build && vsce publish",
