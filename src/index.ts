@@ -14,9 +14,24 @@ let wsStatusBarItem: vscode.StatusBarItem | undefined
 const port = 3010
 
 function broadcast(msg: RestartMessage) {
+  console.log(`${pacakgeName}: Broadcasting`, {
+    msg,
+    wss,
+  })
+
   if (!wss) {
+    console.log(
+      `${pacakgeName}: WebSocket server is not running, cannot broadcast message`,
+    )
+
     return
   }
+
+  if (wss.clients.size === 0) {
+    console.log(`${pacakgeName}: No clients connected, skipping broadcast`)
+    return
+  }
+
   const payload = JSON.stringify(msg)
 
   for (const client of wss.clients) {
