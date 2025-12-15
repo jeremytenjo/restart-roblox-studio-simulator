@@ -243,7 +243,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     // Optional: filter by file pattern (e.g., only TypeScript/Lua files)
-    if (doc.fileName.match(/\.(ts|tsx|js|jsx|lua|luau)$/)) {
+    if (doc.fileName.match(/\.(ts|tsx|js|jsx|lua|luau|json)$/)) {
       console.log(`${pacakgeName}: File saved: ${doc.fileName}`)
       const msg: RestartMessage = {
         type: 'restart',
