@@ -73,6 +73,7 @@
       "properties": {
         "restartRobloxStudioSimulator.websocketPort": {
           "type": "number",
+          "default": 0,
           "minimum": 1024,
           "maximum": 65535,
           "description": "Make sure this port matches the port set in the Roblox Studio simulator bridge plugin for your project."
