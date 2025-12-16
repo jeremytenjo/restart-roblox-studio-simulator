@@ -73,10 +73,9 @@ For multiple workspaces, use different ports:
 
 #### In Roblox Studio Plugin
 
-1. Click the **Settings** button in the Roblox Studio toolbar (Restart Roblox Studio Simulator Bridge section)
+1. Click the **Plugin's Icon** in the Roblox Studio toolbar
 2. Enter the WebSocket port number (must match the port configured in VS Code)
-3. Click **Save** - the port is now persistent and will be remembered across sessions
-4. Click **Connect** to establish the connection
+3. Click **Connect** to establish the connection
 
 ### Optional: Disable Auto Reload
 
