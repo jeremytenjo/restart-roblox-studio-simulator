@@ -1,7 +1,7 @@
 import * as vscode from 'vscode'
 
 import { broadcast, stopWebSocket } from '../websocket.js'
-import { PACKAGE_NAME } from '../constants.js'
+import { PACKAGE_NAME, vsCodePluginName } from '../constants.js'
 
 type RestartMessage = {
   type: 'restart'
@@ -12,7 +12,7 @@ type RestartMessage = {
 export function setupFileSaveListener(context: vscode.ExtensionContext) {
   const onSaveDisposable = vscode.workspace.onDidSaveTextDocument((doc) => {
     const disableAutoReload = vscode.workspace
-      .getConfiguration('restartRobloxStudioSimulator')
+      .getConfiguration(vsCodePluginName)
       .get('disableAutoReload', false)
 
     if (disableAutoReload) {

@@ -2,11 +2,11 @@ import { WebSocketServer, WebSocket } from 'ws'
 import * as vscode from 'vscode'
 
 import { setupWebSocketSocketHandlers } from './handlers/websocket.js'
-import { PACKAGE_NAME } from './constants.js'
+import { PACKAGE_NAME, vsCodePluginName } from './constants.js'
 import assertWebsocketPortConfig from './utils/assertWebsocketPortConfig.js'
 
 export function getWebSocketPort(): number | undefined {
-  const config = vscode.workspace.getConfiguration('restartRobloxStudioSimulator')
+  const config = vscode.workspace.getConfiguration(vsCodePluginName)
   return config.get<number>('websocketPort')
 }
 
