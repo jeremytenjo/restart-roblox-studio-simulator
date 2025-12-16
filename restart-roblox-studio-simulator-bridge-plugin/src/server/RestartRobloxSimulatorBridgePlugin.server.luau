@@ -532,13 +532,13 @@ local function createConfigWidget()
 	-- Status label
 	local statusLabel = Instance.new("TextLabel")
 	statusLabel.Name = "StatusLabel"
-	statusLabel.Text = WS_URL and ("✓ Port configured: " .. tostring(WS_PORT)) or "Port not set"
 	statusLabel.TextSize = 11
-	statusLabel.TextColor3 = WS_URL and Color3.fromRGB(100, 200, 100) or Color3.fromRGB(200, 100, 100)
+	statusLabel.TextColor3 = Color3.fromRGB(100, 200, 100)
 	statusLabel.BackgroundTransparency = 1
 	statusLabel.TextXAlignment = Enum.TextXAlignment.Left
 	statusLabel.Size = UDim2.new(1, 0, 0, 20)
 	statusLabel.LayoutOrder = 4
+	statusLabel.Visible = false -- Hidden by default, only show when connected
 	statusLabel.Parent = mainFrame
 	-- Note: statusLabel not added to textLabels as it has custom coloring
 
@@ -551,6 +551,7 @@ local function createConfigWidget()
 		if not input then
 			statusLabel.Text = "Invalid port (must be a number)"
 			statusLabel.TextColor3 = Color3.fromRGB(200, 100, 100)
+			statusLabel.Visible = true
 			return
 		end
 
@@ -558,6 +559,7 @@ local function createConfigWidget()
 		if port < 1024 or port > 65535 then
 			statusLabel.Text = "Port must be between 1024-65535"
 			statusLabel.TextColor3 = Color3.fromRGB(200, 100, 100)
+			statusLabel.Visible = true
 			return
 		end
 
@@ -569,15 +571,21 @@ local function createConfigWidget()
 		WS_PORT = port
 		WS_URL = "ws://localhost:" .. tostring(WS_PORT)
 
-		statusLabel.Text = "✓ Connected to Port: " .. tostring(WS_PORT)
-		statusLabel.TextColor3 = Color3.fromRGB(100, 200, 100)
-
-		-- Automatically connect with the new port
+		-- Try to connect with the new port
 		task.wait(0.5)
-		connectWS()
+		local connected = connectWS()
 
-		task.wait(1)
-		widget.Enabled = false
+		-- Only show success message if actually connected
+		if connected then
+			statusLabel.Text = "✓ Connected to Port: " .. tostring(WS_PORT)
+			statusLabel.TextColor3 = Color3.fromRGB(100, 200, 100)
+			statusLabel.Visible = true
+			disconnectButton.Enabled = true
+
+			task.wait(1)
+			widget.Enabled = false
+		end
+		-- If connection failed, error notification is already shown by connectWS()
 	end)
 
 	-- Disconnect functionality
