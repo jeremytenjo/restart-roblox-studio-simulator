@@ -143,44 +143,6 @@ connect()
 ]],
 		WS_URL
 	)
-
-	-- LocalScript in StarterPlayerScripts: optional in-game hotkey
-	local starterPlayerScripts = StarterPlayer:WaitForChild("StarterPlayerScripts")
-	local localScript = starterPlayerScripts:FindFirstChild("StudioRestartHotkey_AutoTest")
-	if not localScript then
-		localScript = Instance.new("LocalScript")
-		localScript.Name = "StudioRestartHotkey_AutoTest"
-		localScript.Parent = starterPlayerScripts
-	end
-	localScript:SetAttribute("CreatedByAutoRestartPlayPlugin", true)
-	localScript:SetAttribute("HarnessVersion", HARNESS_VERSION)
-
-	localScript.Source = [[
--- StarterPlayerScripts/StudioRestartHotkey_AutoTest
--- Auto-installed by RestartRobloxStudioSimulatorBridgePlugin
--- Press F2 in Play mode to request restart
-
-local RunService = game:GetService("RunService")
-if not RunService:IsStudio() then
-	return
-end
-
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local UserInputService = game:GetService("UserInputService")
-
-local restartEvent = ReplicatedStorage:WaitForChild("StudioRestartRequest")
-
-local RESTART_KEY = Enum.KeyCode.F2
-
-UserInputService.InputBegan:Connect(function(input, gameProcessed)
-	if gameProcessed then
-		return
-	end
-	if input.KeyCode == RESTART_KEY then
-		restartEvent:FireServer()
-	end
-end)
-]]
 end
 
 local function cleanupHarness()
@@ -192,14 +154,6 @@ local function cleanupHarness()
 	local serverScript = ServerScriptService:FindFirstChild("StudioTestSessionManager_AutoTest")
 	if serverScript and serverScript:GetAttribute("CreatedByAutoRestartPlayPlugin") then
 		serverScript:Destroy()
-	end
-
-	local starterPlayerScripts = StarterPlayer:FindFirstChild("StarterPlayerScripts")
-	if starterPlayerScripts then
-		local localScript = starterPlayerScripts:FindFirstChild("StudioRestartHotkey_AutoTest")
-		if localScript and localScript:GetAttribute("CreatedByAutoRestartPlayPlugin") then
-			localScript:Destroy()
-		end
 	end
 end
 
