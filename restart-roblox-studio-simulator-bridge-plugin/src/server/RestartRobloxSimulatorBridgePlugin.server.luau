@@ -580,8 +580,9 @@ local function createConfigWidget()
 		widget.Enabled = false
 	end)
 
-	-- Cancel functionality
+	-- Disconnect functionality
 	disconnectButton.MouseButton1Click:Connect(function()
+		disconnectWS()
 		widget.Enabled = false
 	end)
 
@@ -606,19 +607,6 @@ local configButton = toolbar:CreateButton("RRSB", "Configure WebSocket port", "r
 
 configButton.Click:Connect(function()
 	showConfigWidget()
-end)
-
-disconnectButton.Click:Connect(function()
-	if not wsClient then
-		if not WS_PORT then
-			showNotification("Port not configured. Click Settings to set it.", 3)
-		else
-			showNotification("Not connected", 2)
-		end
-		return
-	end
-	showNotification("Restart Roblox Studio Simulator: Stopped", 2)
-	disconnectWS()
 end)
 
 -- Keybind entrypoint (bind this action to F2 in Studio)
