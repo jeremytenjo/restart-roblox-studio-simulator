@@ -591,6 +591,7 @@ local function createConfigWidget()
 	-- Disconnect functionality
 	disconnectButton.MouseButton1Click:Connect(function()
 		disconnectWS()
+		statusLabel.Visible = false
 		widget.Enabled = false
 	end)
 
