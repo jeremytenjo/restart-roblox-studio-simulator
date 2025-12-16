@@ -75,7 +75,7 @@
           "type": "number",
           "minimum": 1024,
           "maximum": 65535,
-          "description": "The WebSocket port used to communicate with the Roblox Studio simulator bridge plugin. Make sure this port matches the port set in the plugin's RESTART_ROBLOX_WS_PORT environment variable."
+          "description": "The WebSocket port used to communicate with the Roblox Studio simulator bridge plugin. Make sure this port matches the port set in the plugin's RESTART_ROBLOX_SIMULATOR_BRIDGE_PLUGIN_WEBSOCKET_PORT environment variable."
         },
         "restartRobloxStudioSimulator.disableAutoReload": {
           "type": "boolean",

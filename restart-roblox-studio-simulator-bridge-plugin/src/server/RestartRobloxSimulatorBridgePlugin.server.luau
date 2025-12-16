@@ -18,12 +18,12 @@ local StarterPlayer = game:GetService("StarterPlayer")
 local HttpService = game:GetService("HttpService")
 
 local HARNESS_VERSION = "3"
--- Port MUST be set via RESTART_ROBLOX_WS_PORT environment variable
+-- Port MUST be set via RESTART_ROBLOX_SIMULATOR_BRIDGE_PLUGIN_WEBSOCKET_PORT environment variable
 -- No default port - plugin will not run without explicit configuration
-local WS_PORT = tonumber(os.getenv("RESTART_ROBLOX_WS_PORT"))
+local WS_PORT = tonumber(os.getenv("RESTART_ROBLOX_SIMULATOR_BRIDGE_PLUGIN_WEBSOCKET_PORT"))
 if not WS_PORT then
 	warn(
-		"[RestartRobloxStudioSimulatorBridgePlugin] RESTART_ROBLOX_WS_PORT environment variable not set. Plugin will not connect."
+		"[RestartRobloxStudioSimulatorBridgePlugin] RESTART_ROBLOX_SIMULATOR_BRIDGE_PLUGIN_WEBSOCKET_PORT environment variable not set. Plugin will not connect."
 	)
 	return
 end
