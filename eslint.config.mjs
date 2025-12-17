@@ -6,6 +6,15 @@ import importPlugin from 'eslint-plugin-import'
 
 import prettierConfig from './.prettierrc.mjs'
 
+const prettierEslintConfig = {
+  'prettier/prettier': [
+    'error',
+    {
+      ...prettierConfig,
+    },
+  ],
+}
+
 export default defineConfig([
   // Global settings
   eslintPluginPrettierRecommended,
@@ -17,7 +26,7 @@ export default defineConfig([
   {
     files: ['eslint.config.mjs'],
     rules: {
-      'prettier/prettier': ['off'],
+      ...prettierEslintConfig,
     },
   },
 
@@ -41,7 +50,7 @@ export default defineConfig([
       import: importPlugin,
     },
     rules: {
-      'prettier/prettier': ['off'],
+      ...prettierEslintConfig,
       'require-js-extension/require-js-extension': 'error',
       '@typescript-eslint/consistent-type-imports': 2,
       '@typescript-eslint/no-explicit-any': 0,
