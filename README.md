@@ -4,7 +4,7 @@
 
 A VS Code extension that enables hot-reload functionality for Roblox game development, allowing you to quickly test and restart your Roblox simulator without manual intervention.
 
-https://firebasestorage.googleapis.com/v0/b/portfolio-83749.appspot.com/o/videos%2FCleanShot_2025-12-15_at_18.57.47.mp4?alt=media&token=cdbf3ce5-8a7d-4ef7-9398-6ae3a885a87a
+[Demo](https://firebasestorage.googleapis.com/v0/b/portfolio-83749.appspot.com/o/videos%2FCleanShot_2025-12-15_at_18.57.47.mp4?alt=media&token=cdbf3ce5-8a7d-4ef7-9398-6ae3a885a87a)
 
 ## Features
 
