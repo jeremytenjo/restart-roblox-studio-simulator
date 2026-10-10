@@ -34,7 +34,7 @@
     "prettify": "oxfmt --write \"**/*.{ts,tsx,js,jsx,json,css}\"",
     "lint": "npm run tests:lint && npm run tests:ts-types",
     "tests:lint": "oxlint . --fix",
-    "tests:ts-types": "tsgo --noEmit",
+    "tests:ts-types": "tsgo --noEmit"
   },
   "dependencies": {
     "esbuild": "0.27.1",
