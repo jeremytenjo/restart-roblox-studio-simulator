@@ -1,0 +1,48 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "react", "import", "oxc"],
+  "categories": {
+    "correctness": "error"
+  },
+  "rules": {
+    "react/static-components": "off",
+
+    "eslint/no-unused-expressions": "off",
+
+    "eslint/no-sparse-arrays": "off",
+
+    "react/preserve-manual-memoization": "off",
+
+    "react/refs": "off",
+    "react/purity": "off",
+
+    "react-hooks/exhaustive-deps": "off",
+    "react/set-state-in-effect": "off",
+    "react/immutability": "off",
+
+    "typescript/consistent-type-imports": "error",
+    "typescript/no-explicit-any": "off",
+    "typescript/no-namespace": "off",
+    "typescript/no-var-requires": "off",
+    "typescript/no-unused-vars": "warn",
+    "no-console": "off",
+    "no-debugger": "warn",
+    "no-undef": "error",
+    "no-unreachable": "error",
+    "no-unneeded-ternary": "error",
+    "no-useless-catch": "warn",
+    "no-async-promise-executor": "off",
+    "prefer-const": "error",
+    "no-var": "error",
+    "no-const-assign": "warn",
+    "no-this-before-super": "warn",
+    "constructor-super": "warn",
+    "valid-typeof": "warn"
+  },
+  "ignorePatterns": ["node_modules/**", "build/**", ".env", "dist/**"],
+  "env": {
+    "builtin": true,
+    "browser": true,
+    "node": true
+  }
+}
